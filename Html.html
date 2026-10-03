@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ocean Flashcards · คำศัพท์จีน</title>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#03243f; --mid:#064e72; --teal:#0b8fa3; --aqua:#36d1c4;
+  --foam:#b9f5ef; --sand:#ffe9c4; --coral:#ff7a6b; --green:#2fd98a;
+  --glass:rgba(255,255,255,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:'Kanit',sans-serif;min-height:100vh;color:#eafcff;
+  background:linear-gradient(180deg,#021a30 0%,#04375c 35%,#0a6d87 70%,#11a39c 100%);
+  overflow-x:hidden;position:relative;
+  display:flex;flex-direction:column;align-items:center;padding:18px 14px 150px;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    linear-gradient(105deg,rgba(255,255,255,.10) 0 6%,transparent 6% 14%),
+    linear-gradient(95deg,rgba(255,255,255,.07) 0 4%,transparent 4% 20%),
+    linear-gradient(115deg,rgba(255,255,255,.05) 0 5%,transparent 5% 25%);
+  animation:lightray 12s ease-in-out infinite alternate;
+}
+@keyframes lightray{0%{transform:translateX(-4%) skewX(0deg);opacity:.75}100%{transform:translateX(5%) skewX(3deg);opacity:1}}
+
+.bubble{
+  position:fixed;bottom:-80px;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.85),rgba(255,255,255,.22) 45%,rgba(255,255,255,.05) 70%);
+  border:1px solid rgba(255,255,255,.3);animation:rise linear infinite;
+}
+@keyframes rise{
+  0%{transform:translateY(0) translateX(0) scale(.6);opacity:0}
+  10%{opacity:.8}
+  50%{transform:translateY(-45vh) translateX(22px) scale(1)}
+  90%{opacity:.5}
+  100%{transform:translateY(-105vh) translateX(-18px) scale(1.15);opacity:0}
+}
+
+.waves{position:fixed;left:0;right:0;bottom:0;height:120px;z-index:0;pointer-events:none;opacity:.55}
+.waves svg{width:200%;height:100%}
+.wave1{animation:slide 14s linear infinite}
+.wave2{animation:slide 22s linear infinite reverse;opacity:.6}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+header{position:relative;z-index:2;text-align:center;margin-bottom:14px}
+h1{
+  font-weight:600;font-size:clamp(22px,5vw,32px);letter-spacing:.5px;
+  background:linear-gradient(90deg,var(--foam),var(--sand),var(--aqua));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:float 5s ease-in-out infinite;
+}
+.sub{font-weight:300;font-size:13px;color:#a9e6ef;margin-top:2px}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+.panel{
+  position:relative;z-index:2;width:100%;max-width:560px;
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;
+  background:var(--glass);backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.18);border-radius:18px;
+  padding:12px 14px;margin-bottom:14px;box-shadow:0 10px 30px rgba(0,0,0,.22);
+}
+select,.btn-s{
+  font-family:inherit;font-size:13px;color:#eafcff;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);
+  border-radius:12px;padding:8px 12px;cursor:pointer;outline:none;transition:.25s;
+}
+select option{background:#04375c;color:#fff}
+.btn-s:hover,select:hover{background:rgba(255,255,255,.26);transform:translateY(-2px)}
+
+.switch{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:300}
+.toggle{width:56px;height:28px;border-radius:999px;position:relative;cursor:pointer;
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);transition:.35s}
+.toggle::after{content:"";position:absolute;top:2px;left:2px;width:22px;height:22px;border-radius:50%;
+  background:linear-gradient(145deg,#fff,var(--foam));transition:.35s cubic-bezier(.68,-.55,.27,1.55);
+  box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.toggle.on{background:linear-gradient(90deg,var(--aqua),var(--teal))}
+.toggle.on::after{left:30px}
+
+.stats{position:relative;z-index:2;display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;justify-content:center}
+.chip{background:var(--glass);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);
+  border-radius:14px;padding:6px 14px;font-size:12px;font-weight:300;display:flex;gap:6px;align-items:center}
+.chip b{font-weight:600;font-size:15px}
+.c-ok b{color:var(--green)} .c-no b{color:var(--coral)} .c-left b{color:var(--sand)}
+
+.progress{position:relative;z-index:2;width:100%;max-width:560px;height:9px;border-radius:999px;
+  background:rgba(255,255,255,.15);overflow:hidden;margin-bottom:20px}
+.progress i{display:block;height:100%;width:0%;border-radius:999px;transition:width .5s ease;
+  background:linear-gradient(90deg,var(--aqua),var(--foam),var(--sand));box-shadow:0 0 14px var(--aqua)}
+
+/* ====== โครงการ์ด: wrap = แอนิเมชันเข้า/ออก , card = พลิกอย่างเดียว ====== */
+.stage{position:relative;z-index:2;width:100%;max-width:420px;height:330px}
+.card-wrap{
+  position:absolute;inset:0;perspective:1600px;
+  animation:cardIn .55s ease both;
+}
+.card-wrap.out-ok{animation:flyOk .45s ease forwards}
+.card-wrap.out-no{animation:flyNo .45s ease forwards}
+@keyframes cardIn{from{opacity:0;transform:translateY(34px) scale(.92)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes flyOk{to{opacity:0;transform:translateX(130%) rotate(16deg)}}
+@keyframes flyNo{to{opacity:0;transform:translateX(-130%) rotate(-16deg)}}
+
+.card{
+  position:absolute;inset:0;transform-style:preserve-3d;cursor:pointer;
+  transition:transform .7s cubic-bezier(.3,1.2,.4,1);
+  transform:rotateY(0deg);
+}
+.card.flip{transform:rotateY(180deg)}
+
+.face{
+  position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border-radius:28px;padding:26px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;gap:10px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.28);
+  box-shadow:0 18px 50px rgba(0,20,40,.45), inset 0 1px 0 rgba(255,255,255,.35);
+  backdrop-filter:blur(16px);
+}
+.front{background:linear-gradient(150deg,rgba(255,255,255,.22),rgba(54,209,196,.18) 55%,rgba(6,78,114,.35))}
+.back{transform:rotateY(180deg);background:linear-gradient(150deg,rgba(255,233,196,.20),rgba(255,255,255,.14) 50%,rgba(11,143,163,.32))}
+.face::after{content:"";position:absolute;top:-60%;left:-60%;width:220%;height:220%;
+  background:linear-gradient(60deg,transparent 42%,rgba(255,255,255,.28) 50%,transparent 58%);
+  animation:shine 6s linear infinite;pointer-events:none}
+@keyframes shine{from{transform:translateX(-30%) rotate(0deg)}to{transform:translateX(30%) rotate(360deg)}}
+
+.tag{position:absolute;top:14px;left:16px;font-size:11px;font-weight:300;
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);
+  padding:3px 10px;border-radius:999px;letter-spacing:.5px}
+.idx{position:absolute;top:14px;right:16px;font-size:11px;font-weight:300;opacity:.75}
+
+.hanzi{font-family:'Noto Sans SC',sans-serif;font-weight:500;
+  font-size:clamp(44px,13vw,72px);line-height:1.2;color:#fff;
+  text-shadow:0 6px 24px rgba(0,0,0,.35),0 0 30px rgba(185,245,239,.35)}
+.pinyin{font-size:clamp(20px,5.5vw,28px);font-weight:400;color:var(--sand);letter-spacing:1px}
+.mean{font-size:clamp(15px,4vw,19px);font-weight:300;color:#eafcff;line-height:1.55;max-width:320px}
+.hint{position:absolute;bottom:14px;font-size:11px;font-weight:300;opacity:.6;letter-spacing:.5px}
+
+.actions{position:fixed;bottom:0;left:0;right:0;z-index:5;
+  display:flex;gap:12px;justify-content:center;align-items:center;
+  padding:16px 14px calc(16px + env(safe-area-inset-bottom));
+  background:linear-gradient(180deg,transparent,rgba(1,20,36,.75) 45%)}
+.btn{font-family:inherit;font-size:15px;font-weight:500;color:#03243f;
+  border:none;border-radius:18px;padding:14px 22px;cursor:pointer;
+  display:flex;align-items:center;gap:8px;transition:.25s;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+.btn:active{transform:scale(.94)}
+.btn:hover{transform:translateY(-3px)}
+.no{background:linear-gradient(145deg,#ffb0a4,var(--coral))}
+.ok{background:linear-gradient(145deg,#9af7cd,var(--green))}
+.flipbtn{background:linear-gradient(145deg,#d8fbff,var(--aqua));padding:14px 18px}
+
+.done{position:absolute;inset:0;z-index:4;display:none;flex-direction:column;
+  align-items:center;justify-content:center;gap:14px;text-align:center;
+  border-radius:28px;padding:26px;
+  background:linear-gradient(150deg,rgba(255,255,255,.2),rgba(11,143,163,.3));
+  border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(16px)}
+.done.show{display:flex}
+.done h2{font-weight:600;font-size:26px;color:var(--sand)}
+.done p{font-weight:300;font-size:15px;line-height:1.7}
+.done .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+@media(max-width:420px){.btn{padding:13px 16px;font-size:14px}.stage{height:300px}}
+</style>
+</head>
+<body>
+
+<div class="waves">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path class="wave1" fill="rgba(185,245,239,.35)" d="M0,60 C180,110 360,10 720,60 C1080,110 1260,10 1440,60 L1440,120 L0,120 Z"/>
+  </svg>
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none" style="position:absolute;bottom:0;left:0">
+    <path class="wave2" fill="rgba(54,209,196,.3)" d="M0,70 C240,20 480,120 720,70 C960,20 1200,120 1440,70 L1440,120 L0,120 Z"/>
+  </svg>
+</div>
+
+<header>
+  <h1>Ocean Flashcards</h1>
+  <div class="sub">คำศัพท์จีนหมวดอักษรร่วม · 似 估 伸 伯 佛 供 依 保</div>
+</header>
+
+<div class="panel">
+  <div class="switch">
+    <span>汉字 ก่อน</span>
+    <div class="toggle" id="modeToggle"></div>
+    <span>พินอินก่อน</span>
+  </div>
+  <select id="groupSel"></select>
+  <button class="btn-s" id="shuffleBtn">สลับไพ่</button>
+  <button class="btn-s" id="resetBtn">เริ่มใหม่</button>
+</div>
+
+<div class="stats">
+  <div class="chip c-ok">จำได้ <b id="sOk">0</b></div>
+  <div class="chip c-no">จำไม่ได้ <b id="sNo">0</b></div>
+  <div class="chip c-left">เหลือ <b id="sLeft">0</b></div>
+</div>
+
+<div class="progress"><i id="bar"></i></div>
+
+<div class="stage">
+  <div class="card-wrap" id="wrap">
+    <div class="card" id="card">
+      <div class="face front">
+        <div class="tag" id="tagF">—</div><div class="idx" id="idxF">—</div>
+        <div id="frontBody"></div>
+        <div class="hint">แตะการ์ดเพื่อพลิก</div>
+      </div>
+      <div class="face back">
+        <div class="tag" id="tagB">—</div><div class="idx" id="idxB">—</div>
+        <div id="backBody"></div>
+        <div class="hint">← จำไม่ได้ · จำได้ →</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="done" id="done">
+    <h2>จบรอบแล้ว!</h2>
+    <p id="doneText"></p>
+    <div class="row">
+      <button class="btn-s" id="againNo">ทบทวนเฉพาะที่จำไม่ได้</button>
+      <button class="btn-s" id="againAll">เริ่มใหม่ทั้งหมด</button>
+    </div>
+  </div>
+</div>
+
+<div class="actions">
+  <button class="btn no" id="btnNo">✗ จำไม่ได้</button>
+  <button class="btn flipbtn" id="btnFlip">⟳ พลิก</button>
+  <button class="btn ok" id="btnOk">✓ จำได้</button>
+</div>
+
+<script>
+const DATA = [
+  {g:"似 (sì / shì)", h:"似乎",   p:"sìhū",      m:"ดูเหมือนว่า, คล้ายกับว่า"},
+  {g:"似 (sì / shì)", h:"相似",   p:"xiāngsì",   m:"คล้ายคลึงกัน, เหมือนกัน"},
+  {g:"似 (sì / shì)", h:"类似",   p:"lèisì",     m:"คล้ายคลึง, ประเภทเดียวกัน"},
+  {g:"似 (sì / shì)", h:"似的",   p:"shìde",     m:"ราวกับว่า..., เหมือนกับ..."},
+  {g:"估 (gū)",       h:"估计",   p:"gūjì",      m:"คาดคะเน, ประเมิน, คาดการณ์"},
+  {g:"伸 (shēn)",     h:"伸",     p:"shēn",      m:"ยื่น, ยืด, เหยียดออก"},
+  {g:"伯 (bó)",       h:"阿拉伯语", p:"ālābóyǔ",  m:"ภาษาอาหรับ (เน้นภาษาพูด)"},
+  {g:"伯 (bó)",       h:"阿拉伯文", p:"ālābówén", m:"ภาษาอาหรับ (เน้นภาษาเขียน)"},
+  {g:"伯 (bó)",       h:"伯父",   p:"bófù",      m:"ลุง (พี่ชายของพ่อ – ค่อนข้างเป็นทางการ)"},
+  {g:"伯 (bó)",       h:"伯伯",   p:"bóbo",      m:"ลุง (พี่ชายของพ่อ หรือผู้ชายที่แก่กว่าพ่อ)"},
+  {g:"伯 (bó)",       h:"伯母",   p:"bómǔ",      m:"ป้า (ภรรยาของลุง)"},
+  {g:"佛 (fó / fú)",  h:"仿佛",   p:"fǎngfú",    m:"ราวกับว่า, ดูเหมือนว่า (佛 ในคำนี้อ่าน fú)"},
+  {g:"佛 (fó / fú)",  h:"佛教",   p:"fójiào",    m:"ศาสนาพุทธ"},
+  {g:"供 (gōng / gòng)", h:"供给", p:"gōngjǐ",   m:"จัดหาให้, อุปทาน (Supply)"},
+  {g:"供 (gōng / gòng)", h:"提供", p:"tígōng",   m:"เสนอ, จัดหาให้, ให้บริการ"},
+  {g:"供 (gōng / gòng)", h:"供应", p:"gōngyìng", m:"จัดหาให้ (สินค้า/สิ่งของ), ป้อนให้พอต่อความต้องการ"},
+  {g:"依 (yī)",       h:"依靠",   p:"yīkào",     m:"พึ่งพา, พึ่งพาอาศัย"},
+  {g:"依 (yī)",       h:"依旧",   p:"yījiù",     m:"ยังคงเหมือนเดิม"},
+  {g:"依 (yī)",       h:"依据",   p:"yījù",      m:"อ้างอิงตาม, หลักฐานที่ใช้อ้างอิง"},
+  {g:"依 (yī)",       h:"依然",   p:"yīrán",     m:"ยังคง... (เหมือนเดิม)"},
+  {g:"依 (yī)",       h:"依照",   p:"yīzhào",    m:"ตามที่..., ทำตาม..."},
+  {g:"保 (bǎo)",      h:"保持",   p:"bǎochí",    m:"รักษาไว้ (ให้คงสภาพเดิม เช่น มาตรฐาน, ระยะห่าง)"},
+  {g:"保 (bǎo)",      h:"保存",   p:"bǎocún",    m:"เก็บรักษาไว้ (ไม่ให้สูญหายหรือเน่าเสีย)"},
+  {g:"保 (bǎo)",      h:"保护",   p:"bǎohù",     m:"ปกป้อง, คุ้มครอง"},
+  {g:"保 (bǎo)",      h:"保留",   p:"bǎoliú",    m:"สงวนไว้, เก็บเอาไว้ (ยังไม่จัดการหรือเปลี่ยนแปลง)"},
+  {g:"保 (bǎo)",      h:"保卫",   p:"bǎowèi",    m:"พิทักษ์, ปกป้องรักษา (มักใช้กับประเทศ, สันติภาพ)"},
+  {g:"保 (bǎo)",      h:"保证",   p:"bǎozhèng",  m:"รับประกัน, รับรอง"},
+  {g:"保 (bǎo)",      h:"保管",   p:"bǎoguǎn",   m:"เก็บรักษา, ดูแลรักษา (สิ่งของไม่ให้หาย)"},
+  {g:"保 (bǎo)",      h:"保密",   p:"bǎomì",     m:"รักษาความลับ"},
+  {g:"保 (bǎo)",      h:"保守",   p:"bǎoshǒu",   m:"อนุรักษ์นิยม, หัวโบราณ / เก็บรักษา (ความลับ)"},
+  {g:"保 (bǎo)",      h:"保险",   p:"bǎoxiǎn",   m:"ประกันภัย, ปลอดภัย / ชัวร์ไว้ก่อน"}
+];
+
+let queue=[], cur=null, ok=0, no=0, total=0, missed=[], pinyinFirst=false, busy=false;
+const $=id=>document.getElementById(id);
+const card=$("card"), wrap=$("wrap"), done=$("done");
+
+/* ฟองอากาศ */
+for(let i=0;i<26;i++){
+  const b=document.createElement("div");
+  b.className="bubble";
+  const s=6+Math.random()*26;
+  b.style.width=b.style.height=s+"px";
+  b.style.left=Math.random()*100+"vw";
+  b.style.animationDuration=(9+Math.random()*13)+"s";
+  b.style.animationDelay=(-Math.random()*20)+"s";
+  document.body.appendChild(b);
+}
+
+/* ตัวเลือกกลุ่ม */
+(function(){
+  const sel=$("groupSel"), gs=[...new Set(DATA.map(d=>d.g))];
+  sel.innerHTML='<option value="ALL">ทุกกลุ่ม ('+DATA.length+' คำ)</option>'
+    + gs.map(g=>`<option value="${g}">${g} (${DATA.filter(d=>d.g===g).length})</option>`).join("");
+})();
+
+const shuffle=a=>a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(v=>v[1]);
+
+function start(list){
+  queue=shuffle(list.slice()); total=queue.length; ok=0; no=0; missed=[];
+  done.classList.remove("show"); wrap.style.display="";
+  next();
+}
+
+function next(){
+  card.classList.remove("flip");
+  wrap.classList.remove("out-ok","out-no");
+  if(!queue.length){ finish(); return; }
+  cur=queue.shift();
+  render();
+  /* รีสตาร์ทเฉพาะแอนิเมชันของ wrap ไม่ไปยุ่งกับ transform ของ card */
+  wrap.style.animation="none"; void wrap.offsetWidth; wrap.style.animation="";
+  update();
+}
+
+function render(){
+  const idx=`${total-queue.length} / ${total}`;
+  $("tagF").textContent=$("tagB").textContent=cur.g;
+  $("idxF").textContent=$("idxB").textContent=idx;
+  const hanzi=`<div class="hanzi">${cur.h}</div>`;
+  const detail=`<div class="pinyin">${cur.p}</div><div class="mean">${cur.m}</div>`;
+  $("frontBody").innerHTML = pinyinFirst ? detail : hanzi;
+  $("backBody").innerHTML  = pinyinFirst ? hanzi  : detail;
+}
+
+function update(){
+  $("sOk").textContent=ok; $("sNo").textContent=no;
+  $("sLeft").textContent=queue.length+(cur?1:0);
+  $("bar").style.width = total ? ((ok+no)/total*100)+"%" : "0%";
+}
+
+function doFlip(){
+  if(busy || !cur || done.classList.contains("show")) return;
+  card.classList.toggle("flip");
+}
+
+function answer(good){
+  if(busy || !cur || done.classList.contains("show")) return;
+  busy=true;
+  if(good) ok++; else { no++; missed.push(cur); }
+  wrap.classList.add(good?"out-ok":"out-no");
+  update();
+  setTimeout(()=>{ busy=false; next(); },400);
+}
+
+function finish(){
+  cur=null; update(); wrap.style.display="none";
+  const pct = total ? Math.round(ok/total*100) : 0;
+  $("doneText").innerHTML =
+    `จำได้ <b style="color:#2fd98a">${ok}</b> คำ · จำไม่ได้ <b style="color:#ff7a6b">${no}</b> คำ<br>
+     ความแม่นยำ <b style="color:#ffe9c4">${pct}%</b>`;
+  $("againNo").style.display = missed.length ? "" : "none";
+  done.classList.add("show");
+}
+
+card.addEventListener("click",doFlip);
+$("btnFlip").addEventListener("click",doFlip);
+$("btnOk").addEventListener("click",()=>answer(true));
+$("btnNo").addEventListener("click",()=>answer(false));
+
+$("modeToggle").addEventListener("click",function(){
+  pinyinFirst=!pinyinFirst;
+  this.classList.toggle("on",pinyinFirst);
+  card.classList.remove("flip");
+  if(cur) render();
+});
+
+$("groupSel").addEventListener("change",e=>{
+  const v=e.target.value;
+  start(v==="ALL" ? DATA : DATA.filter(d=>d.g===v));
+});
+$("shuffleBtn").addEventListener("click",()=>{ queue=shuffle(queue); next(); });
+$("resetBtn").addEventListener("click",()=>$("groupSel").dispatchEvent(new Event("change")));
+$("againAll").addEventListener("click",()=>$("groupSel").dispatchEvent(new Event("change")));
+$("againNo").addEventListener("click",()=>start(missed));
+
+document.addEventListener("keydown",e=>{
+  if(e.code==="Space"){ e.preventDefault(); doFlip(); }
+  if(e.key==="ArrowRight") answer(true);
+  if(e.key==="ArrowLeft")  answer(false);
+});
+
+let sx=0,sy=0;
+card.addEventListener("touchstart",e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+card.addEventListener("touchend",e=>{
+  const dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy;
+  if(Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)) answer(dx>0);
+},{passive:true});
+
+start(DATA);
+</script>
+</body>
+</html>
